@@ -4,8 +4,8 @@ import { create } from 'zustand'
 interface TodoStore {
   todos: Todo[]
   addTodo: (data: Todo) => void
-  toggleTodo: (id: number) => void
-  deleteTodo: (id: number) => void
+  toggleTodo: (id: Todo['id']) => void
+  deleteTodo: (id: Todo['id']) => void
   filterCompleted: () => void
   clearCompleted: () => void
 }

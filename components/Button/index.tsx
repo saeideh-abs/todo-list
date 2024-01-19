@@ -5,6 +5,8 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'text' | 'solid' | 'outlined'
   color?: 'primary' | 'secondary'
   size?: 'sm' | 'md' | 'lg'
+  iconLeft?: JSX.Element
+  iconRight?: JSX.Element
 }
 
 export const Button = forwardRef<
@@ -15,6 +17,8 @@ export const Button = forwardRef<
     variant = 'solid',
     color = 'primary',
     size = 'md',
+    iconLeft,
+    iconRight,
     className,
     children,
     ...props
@@ -22,8 +26,8 @@ export const Button = forwardRef<
   ref,
 ) {
   const defaultStyle = cn(
-    `rounded-md outline-none border-none w-fit cursor-pointer`,
-    variant === 'outlined' && 'border bg-transparent',
+    `rounded-md outline-none w-fit cursor-pointer`,
+    variant === 'outlined' && 'border border-solid bg-transparent',
   )
 
   const disableStyle = `disabled:opacity-50 disabled:cursor-not-allowed`
@@ -63,7 +67,11 @@ export const Button = forwardRef<
       )}
       {...props}
     >
-      {children}
+      <div className="flex items-center justify-center gap-1">
+        {iconLeft}
+        {children}
+        {iconRight}
+      </div>
     </button>
   )
 })

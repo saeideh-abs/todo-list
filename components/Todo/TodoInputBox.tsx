@@ -3,6 +3,7 @@ import { object, string, infer as zInfer } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input, Textarea, ErrorMessage } from '@/components'
 import { useTodoStore } from '@/store/todo'
+import { IconPlus } from '@/icons'
 
 const formSchema = object({
   title: string().min(1, { message: 'Title is required' }),
@@ -61,7 +62,12 @@ export const TodoInputBox = () => {
         {...register('content')}
       />
 
-      <Button color="secondary" className="self-end" type="submit">
+      <Button
+        color="secondary"
+        className="self-end"
+        type="submit"
+        iconLeft={<IconPlus className="w-6 h-6 text-white" />}
+      >
         Add
       </Button>
     </form>
