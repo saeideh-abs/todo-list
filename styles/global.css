@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  margin: 0;
+}
+/* scrollbar style */
+/* Works on Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #c4c4c4 #efefef;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #efefef;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+}
