@@ -5,6 +5,17 @@
 p {
   margin: 0;
 }
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* scrollbar style */
 /* Works on Firefox */
 * {

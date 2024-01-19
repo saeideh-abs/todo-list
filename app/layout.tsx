@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
 import '@/styles/global.css'
-import { iranYekan } from '@/styles/fonts'
-import { cn } from '@/utils'
 import { Header } from '@/components'
+import { cn } from '@/utils'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Form',
-  description: 'Further information form',
+  title: 'Todo List',
+  description: 'Todo List',
 }
 
 export default function RootLayout({
@@ -16,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" dir="ltr" className="h-screen">
-      <body className={cn(iranYekan.className, 'text-black m-0 h-full')}>
+      <body className={cn(inter.className, 'text-black m-0 h-full box-border')}>
         <div className="flex flex-col h-full">
           <Header />
           <main className="flex flex-col grow overflow-auto mt-header">
