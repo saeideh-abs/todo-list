@@ -1,15 +1,59 @@
-import { Button, Input } from '..'
-import { Textarea } from '../Input/Textarea'
+import { useForm } from 'react-hook-form'
+import { object, string, infer as zInfer } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Button, Input, Textarea, ErrorMessage } from '@/components'
 
-export const TodoInputBox = () => {
+const formSchema = object({
+  title: string().min(1, { message: 'Title is required' }),
+  content: string().nullable(),
+})
+
+export const TodoInputBox = ({
+  onSubmit,
+}: {
+  onSubmit: (data: zInfer<typeof formSchema>) => void
+}) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<zInfer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: '',
+      content: '',
+    },
+  })
+
+  const onFormSubmit = (data: zInfer<typeof formSchema>) => {
+    onSubmit(data)
+  }
+
   return (
-    <div className="flex flex-col items-center gap-4 w-full">
-      <Input placeholder="Enter the title..." className="w-full" />
-      <Textarea placeholder="Enter the text..." className="w-full" rows={5} />
+    <form
+      onSubmit={handleSubmit(onFormSubmit)}
+      className="flex flex-col items-center gap-4 w-full"
+    >
+      <div className="w-full">
+        <Input
+          placeholder="Enter the title..."
+          className="w-full"
+          {...register('title')}
+          error={!!errors.title}
+        />
+        <ErrorMessage className="self-start" text={errors.title?.message} />
+      </div>
 
-      <Button color="secondary" className="self-end">
+      <Textarea
+        placeholder="Enter the text..."
+        className="w-full"
+        rows={5}
+        {...register('content')}
+      />
+
+      <Button color="secondary" className="self-end" type="submit">
         Add
       </Button>
-    </div>
+    </form>
   )
 }
