@@ -2,20 +2,25 @@ import { useForm } from 'react-hook-form'
 import { object, string, infer as zInfer } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input, Textarea, ErrorMessage } from '@/components'
+import { useTodoStore } from '@/store/todo'
 
 const formSchema = object({
   title: string().min(1, { message: 'Title is required' }),
-  content: string().nullable(),
+  content: string(),
 })
 
-export const TodoInputBox = ({
-  onSubmit,
-}: {
-  onSubmit: (data: zInfer<typeof formSchema>) => void
-}) => {
+// {
+//   onSubmit,
+// }: {
+//   onSubmit: (data: zInfer<typeof formSchema>) => void
+// }
+export const TodoInputBox = () => {
+  const addTodo = useTodoStore(state => state.addTodo)
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<zInfer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -26,7 +31,12 @@ export const TodoInputBox = ({
   })
 
   const onFormSubmit = (data: zInfer<typeof formSchema>) => {
-    onSubmit(data)
+    addTodo({
+      ...data,
+      id: Date.now(),
+      completed: false,
+    })
+    reset()
   }
 
   return (

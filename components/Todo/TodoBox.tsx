@@ -14,7 +14,7 @@ export const TodoBox = ({ title, content }: TodoBoxProps) => {
 
 const TodoBoxHeader = ({ title }: { title: string }) => {
   return (
-    <div className="bg-secondary-500 text-secondary-contrast px-4 py-3 font-semibold rounded-t-lg">
+    <div className="bg-secondary-500 text-secondary-contrast px-4 py-3 text-lg font-semibold rounded-t-lg">
       {title}
     </div>
   )
