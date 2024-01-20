@@ -40,7 +40,7 @@ const TodoBoxBody = ({ id, content, completed }: Omit<Todo, 'title'>) => {
 
   return (
     <div className="flex flex-col gap-6 shadow-lg px-4 py-4 rounded-b-lg border border-saGray-300">
-      <p className="break-all whitespace-pre-wrap">{content}</p>
+      {content && <p className="break-all whitespace-pre-wrap">{content}</p>}
 
       <div className="flex gap-4 justify-end items-center">
         {completed ? (

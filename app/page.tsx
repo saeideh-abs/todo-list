@@ -1,8 +1,9 @@
 'use client'
-import { Button, Divider, TodoInputBox } from '@/components'
-import { TodoBox } from '@/components/Todo/TodoBox'
+import { Divider } from '@/components'
+import { TodoBox } from './_components/Todo/TodoBox'
+import { TodoInputBox } from './_components/Todo/TodoInputBox'
 import { useTodoStore } from '@/store/todo'
-import { todo } from 'node:test'
+import { FilterButtons } from './_components/FilterButtons'
 
 export default function Page() {
   const todos = useTodoStore(state => state.todos)
@@ -13,17 +14,7 @@ export default function Page() {
 
       {!!todos.length && <Divider className="my-5" />}
 
-      {!!todos.length && (
-        <div className="flex gap-4">
-          <Button variant="outlined" color="primary">
-            Filter Completeds
-          </Button>
-
-          <Button variant="outlined" color="primary">
-            Clear Completeds
-          </Button>
-        </div>
-      )}
+      {!!todos.length && <FilterButtons />}
 
       {todos.map(todo => (
         <TodoBox key={todo.id} {...todo} />

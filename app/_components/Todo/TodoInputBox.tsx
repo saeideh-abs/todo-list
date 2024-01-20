@@ -10,11 +10,6 @@ const formSchema = object({
   content: string(),
 })
 
-// {
-//   onSubmit,
-// }: {
-//   onSubmit: (data: zInfer<typeof formSchema>) => void
-// }
 export const TodoInputBox = () => {
   const addTodo = useTodoStore(state => state.addTodo)
 
