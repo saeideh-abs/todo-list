@@ -24,7 +24,10 @@ const TodoBoxHeader = ({
   completed: Todo['completed']
 }) => {
   return (
-    <div className="flex gap-4 justify-between bg-secondary-500 text-secondary-contrast px-4 py-3 text-lg font-semibold rounded-t-lg">
+    <div
+      className={`flex gap-4 justify-between break-all whitespace-pre-wrap 
+      bg-secondary-500 text-secondary-contrast px-4 py-3 text-lg font-semibold rounded-t-lg`}
+    >
       {title}
 
       {completed && <CompletedIcon />}
@@ -32,7 +35,7 @@ const TodoBoxHeader = ({
   )
 }
 
-const iconStyle = `w-6 h-6 cursor-pointer`
+const iconStyle = `w-6 h-6 cursor-pointer flex-none`
 
 const TodoBoxBody = ({ id, content, completed }: Omit<Todo, 'title'>) => {
   const toggleTodo = useTodoStore(state => state.toggleTodo)
