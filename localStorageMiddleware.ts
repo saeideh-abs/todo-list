@@ -1,3 +1,22 @@
+// import { Todo } from './types'
+
+// export class LocalStorageMiddleware {
+//   private storageKey: string
+
+//   constructor(storageKey: string) {
+//     this.storageKey = storageKey
+//   }
+
+//   get(): Todo[] {
+//     const storedData = localStorage.getItem(this.storageKey)
+//     return storedData ? JSON.parse(storedData) : []
+//   }
+
+//   set(todos: Todo[]): void {
+//     localStorage.setItem(this.storageKey, JSON.stringify(todos))
+//   }
+// }
+
 import { Todo } from './types'
 
 export class LocalStorageMiddleware {
@@ -8,11 +27,21 @@ export class LocalStorageMiddleware {
   }
 
   get(): Todo[] {
-    const storedData = localStorage.getItem(this.storageKey)
-    return storedData ? JSON.parse(storedData) : []
+    if (typeof localStorage !== 'undefined') {
+      const storedData = localStorage.getItem(this.storageKey)
+      return storedData ? JSON.parse(storedData) : []
+    } else {
+      // Handle the case when localStorage is not available during SSR/SSG
+      return []
+    }
   }
 
   set(todos: Todo[]): void {
-    localStorage.setItem(this.storageKey, JSON.stringify(todos))
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(this.storageKey, JSON.stringify(todos))
+    } else {
+      // Handle the case when localStorage is not available (e.g., during SSR/SSG)
+      console.error('localStorage is not available. Data cannot be saved.')
+    }
   }
 }
