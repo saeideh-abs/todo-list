@@ -10,7 +10,7 @@ export const ErrorMessage = ({
   return (
     <div
       className={cn(
-        'mt-2 text-xs text-annotation-error font-medium',
+        'mt-2 text-sm text-annotation-error font-medium',
         className,
       )}
     >

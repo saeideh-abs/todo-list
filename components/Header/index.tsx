@@ -1,4 +1,6 @@
-export const Header = () => {
+import { memo } from 'react'
+
+export const Header = memo(() => {
   return (
     <div
       className={`w-full h-header bg-primary-500 text-white fixed flex items-center justify-center
@@ -7,4 +9,6 @@ export const Header = () => {
       Todo List App
     </div>
   )
-}
+})
+
+Header.displayName = 'Header'

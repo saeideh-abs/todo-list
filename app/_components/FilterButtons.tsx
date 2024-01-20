@@ -1,7 +1,6 @@
 import { Button, ButtonProps } from '@/components'
 import { useTodoStore } from '@/store/todo'
 import { cn } from '@/utils'
-import { PropsWithChildren } from 'react'
 import { useShallow } from 'zustand/react/shallow'
 
 export const FilterButtons = () => {
