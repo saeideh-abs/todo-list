@@ -1,5 +1,5 @@
 'use client'
-import { Divider } from '@/components'
+import { Divider, Title } from '@/components'
 import { TodoBox } from './_components/Todo/TodoBox'
 import { TodoInputBox } from './_components/Todo/TodoInputBox'
 import { useTodoStore } from '@/store/todo'
@@ -12,11 +12,7 @@ export default function Page() {
     <div className="flex flex-col gap-6 justify-center px-5 xl:px-10 py-10 w-full">
       <TodoInputBox />
 
-      <div className="flex gap-4 items-center">
-        <Divider className="my-5" />
-        <h2 className="text-primary-500 text-lg">Todos</h2>
-        <Divider className="my-5" />
-      </div>
+      <Title title="Todo" />
 
       <FilterButtons />
 
