@@ -17,7 +17,7 @@ export default function Page() {
     <div className="flex flex-col gap-6 justify-center px-5 xl:px-10 py-10 w-full">
       <MemoisedTodoInputBox />
 
-      <MemoisedTitle title="Todo" />
+      <MemoisedTitle title="Todos" />
 
       <MemoisedFilterButtons />
 

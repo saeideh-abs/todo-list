@@ -1,3 +1,6 @@
 export { default as IconClose } from './components/IconClose'
 export { default as IconPlus } from './components/IconPlus'
 export { default as IconDelete } from './components/IconDelete'
+export { default as IconCheck02 } from './components/IconCheck02'
+export { default as IconCheckCircleBroken } from './components/IconCheckCircleBroken'
+export { default as IconFlipBackward } from './components/IconFlipBackward'
