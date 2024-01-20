@@ -38,8 +38,9 @@ export const TodoInputBox = () => {
   return (
     <form
       onSubmit={handleSubmit(onFormSubmit)}
-      className="flex flex-col items-center gap-4 w-full"
+      className="flex flex-col items-center mx-auto gap-4 w-full md:w-[500px]"
     >
+      <p className="text-primary-700 font-medium self-start">Add new Todo</p>
       <div className="w-full">
         <Input
           placeholder="Enter the title..."

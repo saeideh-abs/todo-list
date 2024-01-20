@@ -14,7 +14,7 @@ export const useTodoStore = create<TodoStore>(set => ({
   todos: [],
   addTodo: data =>
     set(state => ({
-      todos: [...state.todos, { ...data }],
+      todos: [{ ...data }, ...state.todos],
     })),
   toggleTodo: id =>
     set(state => ({
