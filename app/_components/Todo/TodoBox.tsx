@@ -1,5 +1,5 @@
 import { IconDelete } from '@/icons'
-import IconCheckCircleBroken from '@/icons/components/IconCheckCircleBroken'
+import IconCheck02 from '@/icons/components/IconCheck02'
 import IconFlipBackward from '@/icons/components/IconFlipBackward'
 import { useTodoStore } from '@/store/todo'
 import { Todo } from '@/types'
@@ -64,8 +64,11 @@ const TodoBoxBody = ({ id, content, completed }: Omit<Todo, 'title'>) => {
 }
 
 const CompletedIcon = (props: React.HTMLProps<SVGElement>) => (
-  <IconCheckCircleBroken
-    className={cn(iconStyle, 'bg-white rounded-full text-annotation-success')}
+  <IconCheck02
+    className={cn(
+      iconStyle,
+      'bg-white rounded-full text-annotation-success border-2 border-solid border-annotation-success',
+    )}
     {...props}
     ref={null}
   />
