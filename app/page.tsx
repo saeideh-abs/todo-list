@@ -9,7 +9,7 @@ export default function Page() {
   const todos = useTodoStore(state => state.todos)
 
   return (
-    <div className="flex flex-col gap-6 justify-center px-5 py-10 w-full">
+    <div className="flex flex-col gap-6 justify-center px-5 xl:px-10 py-10 w-full">
       <TodoInputBox />
 
       <div className="flex gap-4 items-center">
