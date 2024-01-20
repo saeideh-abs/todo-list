@@ -1,35 +1,67 @@
-import { Button } from '@/components'
+import { Button, ButtonProps } from '@/components'
 import { useTodoStore } from '@/store/todo'
+import { cn } from '@/utils'
+import { PropsWithChildren } from 'react'
 import { useShallow } from 'zustand/react/shallow'
 
 export const FilterButtons = () => {
-  const [filterCompleted, filterActives, clearCompleted, resetFilters] =
-    useTodoStore(
-      useShallow(state => [
-        state.filterCompleted,
-        state.filterActives,
-        state.clearCompleted,
-        state.resetFilters,
-      ]),
-    )
+  const [
+    hasFilter,
+    filterCompleted,
+    filterActives,
+    clearCompleted,
+    resetFilters,
+  ] = useTodoStore(
+    useShallow(state => [
+      state.hasFilter,
+      state.filterCompleted,
+      state.filterActives,
+      state.clearCompleted,
+      state.resetFilters,
+    ]),
+  )
 
   return (
-    <div className="flex gap-4 justify-center">
-      <Button variant="outlined" color="primary" onClick={filterCompleted}>
+    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <ResponsiveButton
+        variant={hasFilter === 'completed' ? 'solid' : 'outlined'}
+        color="primary"
+        onClick={filterCompleted}
+      >
         Filter Completeds
-      </Button>
+      </ResponsiveButton>
 
-      <Button variant="outlined" color="primary" onClick={filterActives}>
+      <ResponsiveButton
+        variant={hasFilter === 'active' ? 'solid' : 'outlined'}
+        color="primary"
+        onClick={filterActives}
+      >
         Filter Actives
-      </Button>
+      </ResponsiveButton>
 
-      <Button variant="outlined" color="primary" onClick={clearCompleted}>
+      <ResponsiveButton
+        variant="outlined"
+        color="primary"
+        onClick={clearCompleted}
+      >
         Clear Completeds
-      </Button>
+      </ResponsiveButton>
 
-      <Button variant="outlined" color="primary" onClick={resetFilters}>
+      <ResponsiveButton
+        variant="outlined"
+        color="primary"
+        onClick={resetFilters}
+      >
         Reset Filters
-      </Button>
+      </ResponsiveButton>
     </div>
+  )
+}
+
+const ResponsiveButton = ({ className, children, ...props }: ButtonProps) => {
+  return (
+    <Button className={cn('w-full sm:w-fit', className)} {...props}>
+      {children}
+    </Button>
   )
 }

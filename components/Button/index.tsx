@@ -26,7 +26,7 @@ export const Button = forwardRef<
   ref,
 ) {
   const defaultStyle = cn(
-    `rounded-md outline-none w-fit cursor-pointer`,
+    `rounded-md w-fit cursor-pointer`,
     variant === 'outlined' && 'border border-solid bg-transparent',
   )
 
