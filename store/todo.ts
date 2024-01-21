@@ -49,10 +49,16 @@ export const useTodoStore = create<TodoStore>(set => {
     },
     deleteTodo: id => {
       set(state => {
-        const updatedTodos = state.todos.filter(todo => todo.id !== id)
+        const updatedTodos = localStorageMiddleware
+          .get()
+          .filter(todo => todo.id !== id)
         localStorageMiddleware.set(updatedTodos)
 
-        return { todos: updatedTodos }
+        const filteredTodos = state.hasFilter
+          ? state.todos.filter(todo => todo.id !== id)
+          : updatedTodos
+
+        return { todos: filteredTodos }
       })
     },
     filterCompleted: () =>
