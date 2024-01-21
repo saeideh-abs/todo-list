@@ -8,12 +8,12 @@ import { memo } from 'react'
 import useStore from '@/store/useStore'
 
 export default function Page() {
-  const todoStore = useStore(useTodoStore, state => state)
+  const todos = useStore(useTodoStore, state => state.todos)
 
   // const todos = useTodoStore(state => state.todos)
-  if (!todoStore) return <div>Loading...</div>
+  if (!todos) return <div>Loading...</div>
 
-  const { todos } = todoStore
+  // const { todos } = todoStore
 
   const MemoisedTodoInputBox = memo(TodoInputBox)
   const MemoisedTitle = memo(Title)

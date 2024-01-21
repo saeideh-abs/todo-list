@@ -18,12 +18,12 @@ export const TodoBoxBody = ({
   content,
   completed,
 }: Omit<Todo, 'title'>) => {
-  const todoStore = useStore(useTodoStore, state => state)
-  // const toggleTodo = useTodoStore(state => state.toggleTodo)
-  // const deleteTodo = useTodoStore(state => state.deleteTodo)
+  // const todoStore = useStore(useTodoStore, state => state)
+  const toggleTodo = useTodoStore(state => state.toggleTodo)
+  const deleteTodo = useTodoStore(state => state.deleteTodo)
 
-  if (!todoStore) return null
-  const { toggleTodo, deleteTodo } = todoStore
+  // if (!todoStore) return null
+  // const { toggleTodo, deleteTodo } = todoStore
 
   return (
     <div className="flex flex-col gap-6 shadow-lg px-4 py-4 rounded-b-lg border border-saGray-300">

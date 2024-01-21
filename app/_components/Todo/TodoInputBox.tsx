@@ -25,11 +25,11 @@ export const TodoInputBox = () => {
     },
   })
 
-  const todoStore = useStore(useTodoStore, state => state)
-  // const addTodo = useTodoStore(state => state.addTodo)
-  if (!todoStore) return null
+  // const todoStore = useStore(useTodoStore, state => state)
+  const addTodo = useTodoStore(state => state.addTodo)
+  // if (!todoStore) return null
 
-  const { addTodo } = todoStore
+  // const { addTodo } = todoStore
 
   const onFormSubmit = (data: zInfer<typeof formSchema>) => {
     addTodo({
