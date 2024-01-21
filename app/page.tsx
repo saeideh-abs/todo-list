@@ -10,10 +10,7 @@ import useStore from '@/store/useStore'
 export default function Page() {
   const todos = useStore(useTodoStore, state => state.todos)
 
-  // const todos = useTodoStore(state => state.todos)
   if (!todos) return <div>Loading...</div>
-
-  // const { todos } = todoStore
 
   const MemoisedTodoInputBox = memo(TodoInputBox)
   const MemoisedTitle = memo(Title)
@@ -27,7 +24,7 @@ export default function Page() {
 
       <MemoisedFilterButtons />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-4">
         {todos.map(todo => (
           <TodoBox key={todo.id} {...todo} />
         ))}
@@ -41,28 +38,3 @@ export default function Page() {
     </div>
   )
 }
-
-// import useStore from '@/store/useStore'
-// import { useBearStore } from '@/store/useBearStore'
-
-// export default function Page() {
-//   const bearStore = useStore(useBearStore, state => state)
-
-//   if (!bearStore) return <div>loading...</div>
-
-//   const { bears, addABear } = bearStore
-
-//   return (
-//     <div>
-//       <p>number of bears {bears}</p>
-//       <button
-//         onClick={() => {
-//           addABear?.()
-//           console.log('click')
-//         }}
-//       >
-//         add bear
-//       </button>
-//     </div>
-//   )
-// }

@@ -20,6 +20,10 @@ const config: Config = {
       boxShadow: {
         header: '0px 3px 15px 3px rgba(34,34,34,0.10)',
       },
+      screens: {
+        '3xl': '1792px',
+        '4xl': '2048px',
+      },
       colors: {
         primary: {
           50: '#e8ecef',

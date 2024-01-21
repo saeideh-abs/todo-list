@@ -9,7 +9,6 @@ import { IconDelete, IconFlipBackward } from '@/icons'
 import { useTodoStore } from '@/store/todo'
 import { Todo } from '@/types'
 import { cn } from '@/utils'
-import useStore from '@/store/useStore'
 
 const iconStyle = `w-6 h-6 cursor-pointer flex-none`
 
@@ -18,12 +17,8 @@ export const TodoBoxBody = ({
   content,
   completed,
 }: Omit<Todo, 'title'>) => {
-  // const todoStore = useStore(useTodoStore, state => state)
   const toggleTodo = useTodoStore(state => state.toggleTodo)
   const deleteTodo = useTodoStore(state => state.deleteTodo)
-
-  // if (!todoStore) return null
-  // const { toggleTodo, deleteTodo } = todoStore
 
   return (
     <div className="flex flex-col gap-6 shadow-lg px-4 py-4 rounded-b-lg border border-saGray-300">
@@ -50,7 +45,7 @@ export const TodoBoxBody = ({
           <TooltipProvider delayDuration={0}>
             <Tooltip>
               <TooltipTrigger asChild>
-                <button>
+                <button className="w-6 h-6">
                   <CompletedIcon onClick={() => toggleTodo(id)} />
                 </button>
               </TooltipTrigger>
