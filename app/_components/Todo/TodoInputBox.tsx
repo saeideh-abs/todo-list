@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Button, Input, Textarea, ErrorMessage } from '@/components'
 import { useTodoStore } from '@/store/todo'
 import { IconPlus } from '@/icons'
+import useStore from '@/store/useStore'
 
 const formSchema = object({
   title: string().min(1, { message: 'Title is required' }),
@@ -11,8 +12,6 @@ const formSchema = object({
 })
 
 export const TodoInputBox = () => {
-  const addTodo = useTodoStore(state => state.addTodo)
-
   const {
     register,
     handleSubmit,
@@ -25,6 +24,12 @@ export const TodoInputBox = () => {
       content: '',
     },
   })
+
+  const todoStore = useStore(useTodoStore, state => state)
+  // const addTodo = useTodoStore(state => state.addTodo)
+  if (!todoStore) return null
+
+  const { addTodo } = todoStore
 
   const onFormSubmit = (data: zInfer<typeof formSchema>) => {
     addTodo({

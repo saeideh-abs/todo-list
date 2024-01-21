@@ -1,4 +1,57 @@
 import { LocalStorageMiddleware } from '@/localStorageMiddleware'
+// import { Todo } from '@/types'
+// import { create } from 'zustand'
+// import { persist } from 'zustand/middleware'
+
+// interface TodoStore {
+//   todos: Todo[]
+//   addTodo: (data: Todo) => void
+//   toggleTodo: (id: Todo['id']) => void
+//   deleteTodo: (id: Todo['id']) => void
+//   filterCompleted: () => void
+//   // filterActives: () => void
+//   clearCompleted: () => void
+//   // resetFilters: () => void
+// }
+
+// // const localStorageMiddleware = new LocalStorageMiddleware('todos')
+
+// export const useTodoStore = create<TodoStore>()(
+//   persist(
+//     (set, get) => ({
+//       todos: [],
+//       addTodo: data =>
+//         set({
+//           todos: [{ ...data }, ...get().todos],
+//         }),
+//       // addTodo: data => {
+//       //   set(() => {
+//       //     const newTodos = [{ ...data }, ...localStorageMiddleware.get()]
+//       //     localStorageMiddleware.set(newTodos)
+
+//       //     return {
+//       //       todos: newTodos,
+//       //       hasFilter: null,
+//       //     }
+//       //   })
+//       // },
+//       toggleTodo: id =>
+//         set(() => ({
+//           todos: get().todos.map(todo =>
+//             todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+//           ),
+//         })),
+//       deleteTodo: id =>
+//         set(() => ({ todos: get().todos.filter(todo => todo.id !== id) })),
+//       filterCompleted: () =>
+//         set(() => ({ todos: get().todos.filter(todo => todo.completed) })),
+//       clearCompleted: () =>
+//         set(() => ({ todos: get().todos.filter(todo => !todo.completed) })),
+//     }),
+//     { name: 'todo-store' },
+//   ),
+// )
+
 import { Todo } from '@/types'
 import { create } from 'zustand'
 

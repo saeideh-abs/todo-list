@@ -1,24 +1,35 @@
 import { Button, ButtonProps } from '@/components'
 import { useTodoStore } from '@/store/todo'
 import { cn } from '@/utils'
+import useStore from '@/store/useStore'
 import { useShallow } from 'zustand/react/shallow'
 
 export const FilterButtons = () => {
-  const [
+  const todoStore = useStore(useTodoStore, state => state)
+  // const [
+  //   hasFilter,
+  //   filterCompleted,
+  //   filterActives,
+  //   clearCompleted,
+  //   resetFilters,
+  // ] = useTodoStore(
+  //   useShallow(state => [
+  //     state.hasFilter,
+  //     state.filterCompleted,
+  //     state.filterActives,
+  //     state.clearCompleted,
+  //     state.resetFilters,
+  //   ]),
+  // )
+  if (!todoStore) return null
+
+  const {
     hasFilter,
-    filterCompleted,
     filterActives,
+    filterCompleted,
     clearCompleted,
     resetFilters,
-  ] = useTodoStore(
-    useShallow(state => [
-      state.hasFilter,
-      state.filterCompleted,
-      state.filterActives,
-      state.clearCompleted,
-      state.resetFilters,
-    ]),
-  )
+  } = todoStore
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 justify-center">

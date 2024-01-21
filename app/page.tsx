@@ -5,9 +5,15 @@ import { TodoInputBox } from './_components/Todo/TodoInputBox'
 import { useTodoStore } from '@/store/todo'
 import { FilterButtons } from './_components/FilterButtons'
 import { memo } from 'react'
+import useStore from '@/store/useStore'
 
 export default function Page() {
-  const todos = useTodoStore(state => state.todos)
+  const todoStore = useStore(useTodoStore, state => state)
+
+  // const todos = useTodoStore(state => state.todos)
+  if (!todoStore) return <div>Loading...</div>
+
+  const { todos } = todoStore
 
   const MemoisedTodoInputBox = memo(TodoInputBox)
   const MemoisedTitle = memo(Title)
@@ -35,3 +41,28 @@ export default function Page() {
     </div>
   )
 }
+
+// import useStore from '@/store/useStore'
+// import { useBearStore } from '@/store/useBearStore'
+
+// export default function Page() {
+//   const bearStore = useStore(useBearStore, state => state)
+
+//   if (!bearStore) return <div>loading...</div>
+
+//   const { bears, addABear } = bearStore
+
+//   return (
+//     <div>
+//       <p>number of bears {bears}</p>
+//       <button
+//         onClick={() => {
+//           addABear?.()
+//           console.log('click')
+//         }}
+//       >
+//         add bear
+//       </button>
+//     </div>
+//   )
+// }
