@@ -22,7 +22,7 @@ const TodoBoxHeader = ({
 }) => {
   return (
     <div
-      className={`flex gap-4 justify-between break-all whitespace-pre-wrap 
+      className={`flex gap-4 justify-between items-center break-all whitespace-pre-wrap 
       bg-secondary-500 text-secondary-contrast px-4 py-3 text-lg font-semibold rounded-t-lg`}
     >
       {title}
